@@ -1,5 +1,5 @@
 {
-  "name": "diphenhydramine",
+  "name": "node-diphenhydramine",
   "version": "0.0.0",
   "description": "Some state of drowsiness is required to use this module",
   "main": "index.js",
