@@ -57,4 +57,14 @@ describe('diphenhydramine', function () {
       });
     });
   });
+
+  describe('.getChats', function () {
+    it('should get chats from a channel', function (done) {
+      p.getChats('channel', false, function (err, c) {
+        should.exist(c);
+        c.chats.length.should.equal(25);
+        done();
+      });
+    });
+  });
 });
