@@ -1,12 +1,14 @@
 {
   "name": "diphenhydramine",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Some state of drowsiness is required to use this module",
-  "main": "index.js",
+  "main": "main.js",
   "dependencies": {
     "level": ">= 0.10.0",
     "level-sublevel": ">= 0.6.1",
     "leveldown": ">= 0.6.1",
+    "level-ttl": "*",
+    "uuid": ">= 1.4.1",
     "concat-stream": ">= 1.2.1"
   },
   "devDependencies": {
