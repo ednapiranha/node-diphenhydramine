@@ -10,7 +10,7 @@ var Diphenhydramine = function (options) {
   var self = this;
 
   var DEFAULT_TTL = 10000;
-  var CHAT_LIMIT = 24;
+  var CHAT_LIMIT = 25;
 
   var setTime = function () {
     return Date.now();
@@ -30,7 +30,6 @@ var Diphenhydramine = function (options) {
       message: chat,
       fingerprint: options.fingerprint || '',
       media: options.media || false,
-      owner: options.owner || false,
       key: key,
       created: created
     });
@@ -78,7 +77,7 @@ var Diphenhydramine = function (options) {
     });
   };
 
-  this.getChats = function (reverse, channel, callback) {
+  this.getChats = function (channel, reverse, callback) {
     setChannel(channel, function (err, channelName) {
       if (err) {
         callback(err);
@@ -108,7 +107,7 @@ var Diphenhydramine = function (options) {
 
     rs.pipe(concat(function (chats) {
       if (chats.length > self.limit) {
-        for (var i = 0; i < chats.length - (self.limit + 1); i ++) {
+        for (var i = 0; i < chats.length - self.limit; i ++) {
           self.channels[channel].put(chats[i].key, {}, {
             ttl: self.ttl
           });
@@ -137,7 +136,6 @@ var Diphenhydramine = function (options) {
           fingerprint: options.fingerprint || '',
           message: chat,
           media: options.media || false,
-          owner: options.owner || false,
           created: created
         }, function (err) {
           if (err) {
