@@ -101,9 +101,7 @@ var Diphenhydramine = function (options) {
   };
 
   var timeoutArchive = function (channel) {
-    var rs = self.channels[channel].createReadStream({
-      reverse: true
-    });
+    var rs = self.channels[channel].createReadStream();
 
     rs.pipe(concat(function (chats) {
       if (chats.length > self.limit) {
