@@ -101,20 +101,28 @@ var Diphenhydramine = function (options) {
   };
 
   var timeoutArchive = function (channel) {
-    var rs = self.channels[channel].createReadStream();
+    setChannel(channel, function (err, channelName) {
+      if (err) {
+        callback(err);
+      } else {
+        var rs = self.channels[channelName].createReadStream({
+          reverse: true
+        });
 
-    rs.pipe(concat(function (chats) {
-      if (chats.length > self.limit) {
-        for (var i = 0; i < chats.length - self.limit; i ++) {
-          self.channels[channel].put(chats[i].key, {}, {
-            ttl: self.ttl
-          });
-        }
+        rs.pipe(concat(function (chats) {
+          if (chats.length > self.limit) {
+            for (var i = 0; i < chats.length - self.limit; i ++) {
+              self.channels[channelName].put(chats[i].key, {}, {
+                ttl: self.ttl
+              });
+            }
+          }
+        }));
+
+        rs.on('error', function (err) {
+          console.error(err);
+        });
       }
-    }));
-
-    rs.on('error', function (err) {
-      console.error(err);
     });
   };
 
@@ -130,7 +138,7 @@ var Diphenhydramine = function (options) {
         var created = setTime();
         var key = setTime() + '!' + uuid.v4();
 
-        self.channels[channel].put(key, {
+        self.channels[channelName].put(key, {
           fingerprint: options.fingerprint || '',
           message: chat,
           media: options.media || false,
