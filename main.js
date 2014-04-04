@@ -1,7 +1,6 @@
 'use strict';
 
 var level = require('level');
-var ttl = require('level-ttl');
 var uuid = require('uuid');
 var Sublevel = require('level-sublevel');
 var concat = require('concat-stream');
@@ -48,10 +47,6 @@ var Diphenhydramine = function (options) {
         createIfMissing: true,
         valueEncoding: 'json'
       }));
-
-      self.channels[channel] = ttl(self.channels[channel], {
-        checkFrequency: options.frequency || self.ttl
-      });
     }
 
     callback(null, channel);
@@ -112,9 +107,7 @@ var Diphenhydramine = function (options) {
         rs.pipe(concat(function (chats) {
           if (chats.length > self.limit) {
             for (var i = 0; i < chats.length - self.limit; i ++) {
-              self.channels[channelName].put(chats[i].key, {}, {
-                ttl: self.ttl
-              });
+              self.channels[channelName].del(chats[i].key);
             }
           }
         }));

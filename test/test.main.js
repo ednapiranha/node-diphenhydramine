@@ -9,8 +9,7 @@ var Diphenhydramine = require('../main');
 
 var p = new Diphenhydramine({
   db: './test/db',
-  frequency: 1,
-  ttl: 1
+  frequency: 1
 });
 
 describe('diphenhydramine', function () {

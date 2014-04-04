@@ -13,7 +13,6 @@ Chat with channels and long-ephemeral messages.
 ## Add a chat message
 
     diphenhydramine.addChat('test message', 'channelname',  {
-      ttl: 10000,
       media: 'http://someimage.jpg',
       fingerprint: '111'
     }, function (err, c) {
