@@ -1,6 +1,6 @@
 {
   "name": "diphenhydramine",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Some state of drowsiness is required to use this module",
   "main": "main.js",
   "dependencies": {
