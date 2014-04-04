@@ -100,9 +100,7 @@ var Diphenhydramine = function (options) {
       if (err) {
         callback(err);
       } else {
-        var rs = self.channels[channelName].createReadStream({
-          reverse: true
-        });
+        var rs = self.channels[channelName].createReadStream();
 
         rs.pipe(concat(function (chats) {
           if (chats.length > self.limit) {
