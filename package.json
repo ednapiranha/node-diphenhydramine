@@ -1,29 +1,29 @@
 {
   "name": "diphenhydramine",
-  "version": "0.0.5",
-  "description": "Some state of drowsiness is required to use this module",
+  "version": "1.0.0",
+  "description": "Chat with channels and long-ephemeral messages",
   "main": "main.js",
   "dependencies": {
-    "level": ">= 0.10.0",
-    "level-sublevel": "~5.2.0",
-    "leveldown": "~0.10.2",
-    "uuid": "~1.4.1",
-    "concat-stream": "~1.4.4"
+    "concat-stream": "^1.4.10",
+    "level": "^1.4.0",
+    "level-sublevel": "^5.2.3",
+    "uuid": "^1.4.2"
   },
   "devDependencies": {
-    "mocha": "~1.18.2",
-    "should": "~3.2.0"
+    "mocha": "^1.18.2",
+    "should": "^3.2.0"
   },
   "scripts": {
-    "test": "make test"
+    "test": "./node_modules/.bin/mocha --timeout 3000"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/ednapiranha/node-diphenhydramine.git"
   },
   "keywords": [
-    "leveldb"
+    "leveldb",
+    "chat"
   ],
-  "author": "Edna Piranha <jen@ednapiranha.com> (http://ednapiranha.com)",
-  "license": "BSD"
+  "author": "Jen",
+  "license": "BSD-3-Clause"
 }
